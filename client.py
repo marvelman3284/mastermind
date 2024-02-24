@@ -2,6 +2,7 @@ import socket
 import pickle
 from collections import Counter
 
+
 def send_guess() -> list[str]:
     poss: list[str] = [
         "red",
@@ -15,7 +16,9 @@ def send_guess() -> list[str]:
     ]
 
     guess: list[str] = []
-    print(f"It is your turn to try to guess the code. Here are the possibilities:\n{poss}")
+    print(
+        f"It is your turn to try to guess the code. Here are the possibilities:\n{poss}"
+    )
     for _ in range(4):
         code = input("What is your guess?(order matters): ")
 
@@ -51,7 +54,7 @@ def main():
             s.sendall(pickle.dumps(guess))
             color = pickle.loads(s.recv(4096))
             print(format_color_codes(color))
-            if guess == code: 
+            if guess == code:
                 print("You win! You guessed the code!")
                 quit()
 

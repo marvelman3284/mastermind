@@ -26,22 +26,28 @@ def create_code() -> list[str]:
             "What color would you like to add to your code (order does matter)? \n>>> "
         )
 
+        combo = combo.replace(" ", "")
+
+        while combo not in possible:
+            combo = input(
+                "That's not a valid color!\nWhat color would you like to add to your code (order does matter)? \n>>> "
+            )
         code.append(combo)
 
     return code
-
 
 
 def color_code(code: list[str], guess: list[str]) -> list[str]:
     color: list[str] = []
     print(f"For a reminder, here is your set code: {code}")
     for i in guess:
-        print(f"Is {i} the right color but the wrong place (c), the right place and right color (r) or wrong color (n): ")
+        print(
+            f"Is {i} the right color but the wrong place (c), the right place and right color (r) or wrong color (n): "
+        )
         c = input(">>> ")
         color.append(c)
 
     return color
-
 
 
 def main():
